@@ -15,7 +15,7 @@ jobs:
         with:
           arguments: assembleRelease
       - name: Upload APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4  # <-- Здесь была v3, теперь v4
         with:
           name: app-release
-          path: app/build/outputs/apk/release/*.apk
+          path: app/build/outputs/apk/release/*.apk 
