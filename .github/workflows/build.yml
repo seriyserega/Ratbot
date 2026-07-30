@@ -4,18 +4,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Set up JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Build with Gradle
-        uses: gradle/gradle-build-action@v2
+
+      - name: Build with Gradle (without wrapper)
+        uses: gradle/gradle-build-action@v3
         with:
+          gradle-version: '8.4'      # <-- явно указываем версию, скачает сам
           arguments: assembleRelease
+
       - name: Upload APK
-        uses: actions/upload-artifact@v4  # <-- Здесь была v3, теперь v4
+        uses: actions/upload-artifact@v4
         with:
           name: app-release
-          path: app/build/outputs/apk/release/*.apk 
+          path: app/build/outputs/apk/release/*.apk
