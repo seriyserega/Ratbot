@@ -1,0 +1,21 @@
+apply plugin: 'com.android.application'
+android {
+    compileSdk 33
+    defaultConfig {
+        applicationId "com.android.system.update"
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+dependencies {
+    implementation 'com.squareup.okhttp3:okhttp:4.11.0'
+    implementation 'org.json:json:20230227'
+}
